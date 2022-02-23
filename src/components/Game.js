@@ -1,5 +1,6 @@
 import "./Game.css";
 import GameRow from "./GameRow";
+import GameKeyboard from "./GameKeyboard";
 
 const Game = () => {
   return (
@@ -14,6 +15,7 @@ const Game = () => {
           <GameRow />
         </div>
       </div>
+      <GameKeyboard />
     </div>
   );
 };
