@@ -1,131 +1,45 @@
 import "./GameKeyboard.css";
 
-const GameKeyboard = ({ onClick }) => {
-  const rows = [
-    {
-      id: 1,
-      buttons: [
-        {
-          id: 1,
-          text: "q",
-        },
-        {
-          id: 2,
-          text: "w",
-        },
-        {
-          id: 3,
-          text: "e",
-        },
-        {
-          id: 4,
-          text: "r",
-        },
-        {
-          id: 5,
-          text: "t",
-        },
-        {
-          id: 6,
-          text: "y",
-        },
-        {
-          id: 7,
-          text: "u",
-        },
-        {
-          id: 8,
-          text: "i",
-        },
-        {
-          id: 9,
-          text: "o",
-        },
-        {
-          id: 10,
-          text: "p",
-        },
-      ],
-    },
-  ];
-  const row = [
-    {
-      id: 1,
-      text: "q",
-    },
-    {
-      id: 2,
-      text: "w",
-    },
-    {
-      id: 3,
-      text: "e",
-    },
-    {
-      id: 4,
-      text: "r",
-    },
-    {
-      id: 5,
-      text: "t",
-    },
-    {
-      id: 6,
-      text: "y",
-    },
-    {
-      id: 7,
-      text: "u",
-    },
-    {
-      id: 8,
-      text: "i",
-    },
-    {
-      id: 9,
-      text: "o",
-    },
-    {
-      id: 10,
-      text: "p",
-    },
-  ];
+const GameKeyboard = ({ onClick, onEnter, onDelete }) => {
   return (
     <div id="keyboard">
       <div className="krow">
-        {row.map((btn) => (
-          <button
-            key={btn.id}
-            data-key={btn.text}
-            onClick={() => onClick(btn.text)}
-          >
-            {btn.text}
-          </button>
-        ))}
+        <button onClick={() => onClick("q")}>q</button>
+        <button onClick={() => onClick("w")}>w</button>
+        <button onClick={() => onClick("e")}>e</button>
+        <button onClick={() => onClick("r")}>r</button>
+        <button onClick={() => onClick("t")}>t</button>
+        <button onClick={() => onClick("y")}>y</button>
+        <button onClick={() => onClick("u")}>u</button>
+        <button onClick={() => onClick("i")}>i</button>
+        <button onClick={() => onClick("o")}>o</button>
+        <button onClick={() => onClick("p")}>p</button>
       </div>
       <div className="krow">
         <div className="spacer half"></div>
-        <button>a</button>
-        <button>s</button>
-        <button>d</button>
-        <button>f</button>
-        <button>g</button>
-        <button>h</button>
-        <button>j</button>
-        <button>k</button>
-        <button>l</button>
+        <button onClick={() => onClick("a")}>a</button>
+        <button onClick={() => onClick("s")}>s</button>
+        <button onClick={() => onClick("d")}>d</button>
+        <button onClick={() => onClick("f")}>f</button>
+        <button onClick={() => onClick("g")}>g</button>
+        <button onClick={() => onClick("h")}>h</button>
+        <button onClick={() => onClick("j")}>j</button>
+        <button onClick={() => onClick("k")}>k</button>
+        <button onClick={() => onClick("l")}>l</button>
         <div className="spacer half"></div>
       </div>
       <div className="krow">
-        <button className="one-and-a-half">enter</button>
-        <button>z</button>
-        <button>x</button>
-        <button>c</button>
-        <button>v</button>
-        <button>b</button>
-        <button>n</button>
-        <button>m</button>
-        <button className="one-and-a-half">
+        <button className="one-and-a-half" onClick={onEnter}>
+          enter
+        </button>
+        <button onClick={() => onClick("z")}>z</button>
+        <button onClick={() => onClick("x")}>x</button>
+        <button onClick={() => onClick("c")}>c</button>
+        <button onClick={() => onClick("v")}>v</button>
+        <button onClick={() => onClick("b")}>b</button>
+        <button onClick={() => onClick("n")}>n</button>
+        <button onClick={() => onClick("m")}>m</button>
+        <button className="one-and-a-half" onClick={onDelete}>
           {/* steal from the original game */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
