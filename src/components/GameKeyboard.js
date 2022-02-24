@@ -1,19 +1,107 @@
 import "./GameKeyboard.css";
 
-const GameKeyboard = () => {
+const GameKeyboard = ({ onClick }) => {
+  const rows = [
+    {
+      id: 1,
+      buttons: [
+        {
+          id: 1,
+          text: "q",
+        },
+        {
+          id: 2,
+          text: "w",
+        },
+        {
+          id: 3,
+          text: "e",
+        },
+        {
+          id: 4,
+          text: "r",
+        },
+        {
+          id: 5,
+          text: "t",
+        },
+        {
+          id: 6,
+          text: "y",
+        },
+        {
+          id: 7,
+          text: "u",
+        },
+        {
+          id: 8,
+          text: "i",
+        },
+        {
+          id: 9,
+          text: "o",
+        },
+        {
+          id: 10,
+          text: "p",
+        },
+      ],
+    },
+  ];
+  const row = [
+    {
+      id: 1,
+      text: "q",
+    },
+    {
+      id: 2,
+      text: "w",
+    },
+    {
+      id: 3,
+      text: "e",
+    },
+    {
+      id: 4,
+      text: "r",
+    },
+    {
+      id: 5,
+      text: "t",
+    },
+    {
+      id: 6,
+      text: "y",
+    },
+    {
+      id: 7,
+      text: "u",
+    },
+    {
+      id: 8,
+      text: "i",
+    },
+    {
+      id: 9,
+      text: "o",
+    },
+    {
+      id: 10,
+      text: "p",
+    },
+  ];
   return (
     <div id="keyboard">
       <div className="krow">
-        <button>q</button>
-        <button>w</button>
-        <button>e</button>
-        <button>r</button>
-        <button>t</button>
-        <button>y</button>
-        <button>u</button>
-        <button>i</button>
-        <button>o</button>
-        <button>p</button>
+        {row.map((btn) => (
+          <button
+            key={btn.id}
+            data-key={btn.text}
+            onClick={() => onClick(btn.text)}
+          >
+            {btn.text}
+          </button>
+        ))}
       </div>
       <div className="krow">
         <div className="spacer half"></div>
