@@ -6,6 +6,8 @@ import { Ma } from "./Ma";
 import { Oa } from "./Oa";
 
 const Game = () => {
+  const [win, setWin] = useState(false);
+
   const [word, setWord] = useState([]);
   const [colIdx, setColIdx] = useState(0);
   const [rowIdx, setRowIdx] = useState(0);
@@ -32,7 +34,7 @@ const Game = () => {
     if (colIdx < 5) {
       alert("Not enough letter");
     } else {
-      var curLetter = "";
+      let curLetter = "";
       for (let index = 0; index < word.length; index++) {
         const element = word[index];
         curLetter += element.text;
@@ -40,7 +42,8 @@ const Game = () => {
       if (![...Oa, ...Ma].includes(curLetter)) {
         alert("Word not allowed");
       } else {
-        var evaluatedWord = [];
+        let evaluatedWord = [];
+        let correctLetters = 0;
         for (let index = 0; index < word.length; index++) {
           const element = word[index];
           const pos = todayWord.indexOf(element.text);
@@ -52,6 +55,7 @@ const Game = () => {
                 anim: "flip-in",
                 text: element.text,
               });
+              correctLetters++;
             } else {
               evaluatedWord.push({
                 id: index,
@@ -73,6 +77,9 @@ const Game = () => {
         setEvaluatedWords([...evaluatedWords, evaluatedWord]);
         setColIdx(0);
         setRowIdx(rowIdx + 1);
+        if (correctLetters === 5) {
+          setWin(true);
+        }
       }
     }
   };
@@ -87,13 +94,13 @@ const Game = () => {
     }
   };
 
-  var rows = [];
-  var i = 0;
+  let rows = [];
+  let i = 0;
   for (; i < evaluatedWords.length; i++) {
     const element = evaluatedWords[i];
-    rows.push(<GameRow letters={element} />);
+    rows.push(<GameRow key={rowIdx} letters={element} />);
   }
-  rows.push(<GameRow letters={word} />);
+  rows.push(<GameRow key={rowIdx} letters={word} />);
   i++;
   if (evaluatedWords.length < 6) {
     for (; i < 6; i++) {
@@ -107,11 +114,19 @@ const Game = () => {
           {rows.map((row) => row)}
         </div>
       </div>
-      <GameKeyboard
-        onClick={onKeyClick}
-        onEnter={onEnterClick}
-        onDelete={onBackspaceClick}
-      />
+      {win ? (
+        <GameKeyboard
+          onClick={(key) => key}
+          onEnter={(key) => key}
+          onDelete={(key) => key}
+        />
+      ) : (
+        <GameKeyboard
+          onClick={onKeyClick}
+          onEnter={onEnterClick}
+          onDelete={onBackspaceClick}
+        />
+      )}
     </div>
   );
 };

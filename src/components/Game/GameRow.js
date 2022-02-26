@@ -21,7 +21,11 @@ const GameRow = ({ letters }) => {
     }
   }
 
-  return <div className="row">{cols.map((tile) => tile)}</div>;
+  return (
+    <div className="row" data-animation="shake">
+      {cols.map((tile) => tile)}
+    </div>
+  );
 };
 
 export default GameRow;

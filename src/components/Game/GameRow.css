@@ -1,14 +1,14 @@
 :host {
   display: block;
 }
-:host([invalid]) {
-  animation-name: Shake;
-  animation-duration: 600ms;
-}
 .row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
+}
+.row[data-animation="shake"] {
+  animation-name: Shake;
+  animation-duration: 600ms;
 }
 .win {
   animation-name: Bounce;
