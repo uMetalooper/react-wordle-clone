@@ -4,41 +4,24 @@ const GameKeyboard = ({ onClick, onEnter, onDelete }) => {
   return (
     <div id="keyboard">
       <div className="krow">
-        <button onClick={() => onClick("q")}>q</button>
-        <button onClick={() => onClick("w")}>w</button>
-        <button onClick={() => onClick("e")}>e</button>
-        <button onClick={() => onClick("r")}>r</button>
-        <button onClick={() => onClick("t")}>t</button>
-        <button onClick={() => onClick("y")}>y</button>
-        <button onClick={() => onClick("u")}>u</button>
-        <button onClick={() => onClick("i")}>i</button>
-        <button onClick={() => onClick("o")}>o</button>
-        <button onClick={() => onClick("p")}>p</button>
+        {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((c) => {
+          return <button onClick={() => onClick(c)}>{c}</button>;
+        })}
       </div>
       <div className="krow">
         <div className="spacer half"></div>
-        <button onClick={() => onClick("a")}>a</button>
-        <button onClick={() => onClick("s")}>s</button>
-        <button onClick={() => onClick("d")}>d</button>
-        <button onClick={() => onClick("f")}>f</button>
-        <button onClick={() => onClick("g")}>g</button>
-        <button onClick={() => onClick("h")}>h</button>
-        <button onClick={() => onClick("j")}>j</button>
-        <button onClick={() => onClick("k")}>k</button>
-        <button onClick={() => onClick("l")}>l</button>
+        {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((c) => {
+          return <button onClick={() => onClick(c)}>{c}</button>;
+        })}
         <div className="spacer half"></div>
       </div>
       <div className="krow">
         <button className="one-and-a-half" onClick={onEnter}>
           enter
         </button>
-        <button onClick={() => onClick("z")}>z</button>
-        <button onClick={() => onClick("x")}>x</button>
-        <button onClick={() => onClick("c")}>c</button>
-        <button onClick={() => onClick("v")}>v</button>
-        <button onClick={() => onClick("b")}>b</button>
-        <button onClick={() => onClick("n")}>n</button>
-        <button onClick={() => onClick("m")}>m</button>
+        {["z", "x", "c", "v", "b", "n", "m"].map((c) => {
+          return <button onClick={() => onClick(c)}>{c}</button>;
+        })}
         <button className="one-and-a-half" onClick={onDelete}>
           {/* steal from the original game */}
           <svg
