@@ -1,7 +1,7 @@
 import "./Game.css";
 import { useState } from "react";
-import GameRow from "./GameRow";
-import GameKeyboard from "./GameKeyboard";
+import GameRow from "../GameRow";
+import GameKeyboard from "../GameKeyboard";
 import { Ma } from "../Ma";
 import { Oa } from "../Oa";
 

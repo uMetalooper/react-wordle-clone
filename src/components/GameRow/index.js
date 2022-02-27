@@ -1,5 +1,6 @@
+import GameTile from "../GameTile";
+
 import "./GameRow.css";
-import GameTile from "./GameTile";
 
 const GameRow = ({ letters }) => {
   var cols = [];
