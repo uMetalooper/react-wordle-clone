@@ -2,8 +2,8 @@ import "./Game.css";
 import { useState } from "react";
 import GameRow from "../GameRow";
 import GameKeyboard from "../GameKeyboard";
-import { Ma } from "../Ma";
-import { Oa } from "../Oa";
+import { Ma } from "../../data/Ma";
+import { Oa } from "../../data/Oa";
 
 const Game = () => {
   const [win, setWin] = useState(false);
