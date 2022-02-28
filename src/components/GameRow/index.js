@@ -1,4 +1,4 @@
-import GameTile from "../GameTile";
+import GameTile from "components/GameTile";
 
 import "./GameRow.css";
 
