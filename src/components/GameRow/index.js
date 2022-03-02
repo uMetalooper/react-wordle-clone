@@ -1,4 +1,4 @@
-import GameTile from "../GameTile";
+import GameTile from "components/GameTile";
 
 import "./GameRow.css";
 
@@ -11,11 +11,11 @@ const GameRow = ({ letters }) => {
         anim={element.anim}
         letter={element.text}
       />
-    )
-  })
+    );
+  });
 
   if (letters.length < 5) {
-    for (let index = 0; index < (5 - letters.length); index++) {
+    for (let index = letters.length; index < 5; index++) {
       tiles.push(<GameTile key={index} />);
     }
   }
