@@ -4,14 +4,22 @@ const GameKeyboard = ({ onClick, onEnter, onDelete }) => {
   return (
     <div id="keyboard">
       <div className="krow">
-        {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((c) => {
-          return <button onClick={() => onClick(c)}>{c}</button>;
+        {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((c, i) => {
+          return (
+            <button key={i} onClick={() => onClick(c)}>
+              {c}
+            </button>
+          );
         })}
       </div>
       <div className="krow">
         <div className="spacer half"></div>
-        {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((c) => {
-          return <button onClick={() => onClick(c)}>{c}</button>;
+        {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((c, i) => {
+          return (
+            <button key={i} onClick={() => onClick(c)}>
+              {c}
+            </button>
+          );
         })}
         <div className="spacer half"></div>
       </div>
@@ -19,8 +27,12 @@ const GameKeyboard = ({ onClick, onEnter, onDelete }) => {
         <button className="one-and-a-half" onClick={onEnter}>
           enter
         </button>
-        {["z", "x", "c", "v", "b", "n", "m"].map((c) => {
-          return <button onClick={() => onClick(c)}>{c}</button>;
+        {["z", "x", "c", "v", "b", "n", "m"].map((c, i) => {
+          return (
+            <button key={i} onClick={() => onClick(c)}>
+              {c}
+            </button>
+          );
         })}
         <button className="one-and-a-half" onClick={onDelete}>
           {/* steal from the original game */}

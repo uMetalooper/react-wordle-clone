@@ -1,9 +1,9 @@
 import "./Game.css";
 import { useState } from "react";
-import GameRow from "../GameRow";
-import GameKeyboard from "../GameKeyboard";
-import { Ma } from "../../data/Ma";
-import { Oa } from "../../data/Oa";
+import GameRow from "components/GameRow";
+import GameKeyboard from "components/GameKeyboard";
+import { Ma } from "data/Ma";
+import { Oa } from "data/Oa";
 
 const Game = () => {
   const [win, setWin] = useState(false);
@@ -98,13 +98,13 @@ const Game = () => {
   let i = 0;
   for (; i < evaluatedWords.length; i++) {
     const element = evaluatedWords[i];
-    rows.push(<GameRow key={rowIdx} letters={element} />);
+    rows.push(<GameRow key={i} letters={element} />);
   }
-  rows.push(<GameRow key={rowIdx} letters={word} />);
+  rows.push(<GameRow key={i} letters={word} />);
   i++;
   if (evaluatedWords.length < 6) {
     for (; i < 6; i++) {
-      rows.push(<GameRow letters={[]} />);
+      rows.push(<GameRow key={i} letters={[]} />);
     }
   }
   return (
