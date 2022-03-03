@@ -94,24 +94,21 @@ const Game = () => {
     }
   };
 
-  let rows = [];
-  let i = 0;
-  for (; i < evaluatedWords.length; i++) {
-    const element = evaluatedWords[i];
-    rows.push(<GameRow key={i} letters={element} />);
-  }
-  rows.push(<GameRow key={i} letters={word} />);
-  i++;
+  const gameRows = evaluatedWords.map((eword, index)=>{
+    return (<GameRow key={(index)} letters={eword}/>)
+  })
+  
+  gameRows.push(<GameRow key={evaluatedWords.length} letters={word} />);
   if (evaluatedWords.length < 6) {
-    for (; i < 6; i++) {
-      rows.push(<GameRow key={i} letters={[]} />);
+    for (let i = evaluatedWords.length+1; i < 6; i++) {
+      gameRows.push(<GameRow key={i} letters={[]} />);
     }
   }
   return (
     <div id="game">
       <div id="board-container">
         <div id="board" style={{ width: "350px", height: "420px" }}>
-          {rows.map((row) => row)}
+          {gameRows}
         </div>
       </div>
       {win ? (
