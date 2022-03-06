@@ -2,8 +2,11 @@ import "./Game.css";
 import { useState } from "react";
 import GameRow from "components/GameRow";
 import GameKeyboard from "components/GameKeyboard";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Ma } from "data/Ma";
 import { Oa } from "data/Oa";
+
 
 const Game = () => {
   const [win, setWin] = useState(false);
@@ -32,7 +35,18 @@ const Game = () => {
 
   const onEnterClick = () => {
     if (colIdx < 5) {
-      alert("Not enough letter");
+      toast.error('Not enough letters', {
+        position: "top-center",
+        autoClose: 200,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        closeButton: false,
+        theme: "dark",
+        transition: Flip
+        });
     } else {
       let curLetter = "";
       for (let index = 0; index < word.length; index++) {
@@ -40,7 +54,18 @@ const Game = () => {
         curLetter += element.text;
       }
       if (![...Oa, ...Ma].includes(curLetter)) {
-        alert("Word not allowed");
+        toast.error('Not in word list', {
+          position: "top-center",
+          autoClose: 200,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          closeButton: false,
+          theme: "dark",
+          transition: Flip
+          });
       } else {
         let evaluatedWord = [];
         let correctLetters = 0;
@@ -85,22 +110,20 @@ const Game = () => {
   };
 
   const onBackspaceClick = () => {
-    if (colIdx === 0) {
-      alert("Nothing to delete");
-    } else {
+    if (colIdx > 0) {
       const newIndex = colIdx - 1;
       setWord(word.filter((letter) => letter.id !== colIdx - 1));
       setColIdx(newIndex);
     }
   };
 
-  const gameRows = evaluatedWords.map((eword, index)=>{
-    return (<GameRow key={(index)} letters={eword}/>)
+  const gameRows = evaluatedWords.map((eword, index) => {
+    return (<GameRow key={(index)} letters={eword} />)
   })
-  
+
   gameRows.push(<GameRow key={evaluatedWords.length} letters={word} />);
   if (evaluatedWords.length < 6) {
-    for (let i = evaluatedWords.length+1; i < 6; i++) {
+    for (let i = evaluatedWords.length + 1; i < 6; i++) {
       gameRows.push(<GameRow key={i} letters={[]} />);
     }
   }
@@ -124,6 +147,17 @@ const Game = () => {
           onDelete={onBackspaceClick}
         />
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

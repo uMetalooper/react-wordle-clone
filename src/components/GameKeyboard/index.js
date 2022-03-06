@@ -6,7 +6,7 @@ const GameKeyboard = ({ onClick, onEnter, onDelete }) => {
       <div className="krow">
         {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((c, i) => {
           return (
-            <button key={i} onClick={() => onClick(c)}>
+            <button key={i} onClick={() => onClick(c)} data-state="">
               {c}
             </button>
           );
