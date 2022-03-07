@@ -9,6 +9,7 @@ import { Oa } from "data/Oa";
 
 
 const Game = () => {
+  // state
   const [win, setWin] = useState(false);
 
   const [word, setWord] = useState([]);
@@ -17,8 +18,146 @@ const Game = () => {
 
   const [evaluatedWords, setEvaluatedWords] = useState([]);
 
+  const keyStates = [
+    // 1st row
+    {
+      id: 0,
+      keyName: "q",
+      state: ""
+    },
+    {
+      id: 1,
+      keyName: "w",
+      state: ""
+    },
+    {
+      id: 2,
+      keyName: "e",
+      state: ""
+    },
+    {
+      id: 3,
+      keyName: "r",
+      state: ""
+    },
+    {
+      id: 4,
+      keyName: "t",
+      state: ""
+    },
+    {
+      id: 5,
+      keyName: "y",
+      state: ""
+    },
+    {
+      id: 6,
+      keyName: "u",
+      state: ""
+    },
+    {
+      id: 7,
+      keyName: "i",
+      state: ""
+    },
+    {
+      id: 8,
+      keyName: "o",
+      state: ""
+    },
+    {
+      id: 9,
+      keyName: "p",
+      state: ""
+    },
+    // 2nd row
+    {
+      id: 10,
+      keyName: "a",
+      state: ""
+    },
+    {
+      id: 11,
+      keyName: "s",
+      state: ""
+    },
+    {
+      id: 12,
+      keyName: "d",
+      state: ""
+    },
+    {
+      id: 13,
+      keyName: "f",
+      state: ""
+    },
+    {
+      id: 14,
+      keyName: "g",
+      state: ""
+    },
+    {
+      id: 15,
+      keyName: "h",
+      state: ""
+    },
+    {
+      id: 16,
+      keyName: "j",
+      state: ""
+    },
+    {
+      id: 17,
+      keyName: "k",
+      state: ""
+    },
+    {
+      id: 18,
+      keyName: "l",
+      state: ""
+    },
+    // 3rd row
+    {
+      id: 19,
+      keyName: "z",
+      state: ""
+    },
+    {
+      id: 20,
+      keyName: "x",
+      state: ""
+    },
+    {
+      id: 21,
+      keyName: "c",
+      state: ""
+    },
+    {
+      id: 22,
+      keyName: "v",
+      state: ""
+    },
+    {
+      id: 23,
+      keyName: "b",
+      state: ""
+    },
+    {
+      id: 24,
+      keyName: "n",
+      state: ""
+    },
+    {
+      id: 25,
+      keyName: "m",
+      state: ""
+    },
+  ];
+
   const todayIndex = 203;
   const todayWord = Ma[todayIndex];
+
+  // actions
   const onKeyClick = (key) => {
     if (colIdx < 5) {
       const newLetter = {
@@ -81,6 +220,14 @@ const Game = () => {
                 text: element.text,
               });
               correctLetters++;
+              for (const obj in keyStates) {
+                if (obj.keyName === element.text)
+                {
+                  obj.state = "correct";
+                }
+              }
+              console.log(element);
+              console.log(keyStates);
             } else {
               evaluatedWord.push({
                 id: index,
@@ -117,6 +264,7 @@ const Game = () => {
     }
   };
 
+  // view
   const gameRows = evaluatedWords.map((eword, index) => {
     return (<GameRow key={(index)} letters={eword} />)
   })
@@ -139,12 +287,14 @@ const Game = () => {
           onClick={(key) => key}
           onEnter={(key) => key}
           onDelete={(key) => key}
+          keyStates={keyStates}
         />
       ) : (
         <GameKeyboard
           onClick={onKeyClick}
           onEnter={onEnterClick}
           onDelete={onBackspaceClick}
+          keyStates={keyStates}
         />
       )}
       <ToastContainer

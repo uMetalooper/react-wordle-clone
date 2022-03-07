@@ -1,12 +1,25 @@
 import "./GameKeyboard.css";
 
-const GameKeyboard = ({ onClick, onEnter, onDelete }) => {
+const GameKeyboard = ({ onClick, onEnter, onDelete, keyStates }) => {
+  const getDataState = (index) => {
+    switch (index) {
+      case 1:
+        return "correct";
+      case 2:
+        return "present";
+      case 3:
+        return "absent";
+      default:
+        return "";
+    }
+  }
+
   return (
     <div id="keyboard">
       <div className="krow">
         {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((c, i) => {
           return (
-            <button key={i} onClick={() => onClick(c)} data-state="">
+            <button key={i} onClick={() => onClick(c)} data-state={keyStates[i]}>
               {c}
             </button>
           );
